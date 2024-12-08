@@ -32,11 +32,12 @@ class LeadPage(BasePage):
     def click_leads_in_nav_bar(self):
         self.hover_element(LeadPageLocators.MARKETING_NAV_BAR)
         self.click_element(LeadPageLocators.LEADS_MENU_OPTION)
-        self.wait_element(LeadPageLocators.MODULE_TITLE)
+        self.wait_element_text(LeadPageLocators.MODULE_TITLE)
 
     def click_create_lead(self):
         self.click_element(LeadPageLocators.CREATE_LEAD)
         self.wait_element(LeadPageLocators.EDIT_VIEW)
+        self.wait_element_text(LeadPageLocators.MODULE_TITLE)
 
     def fill_last_name(self, last_name):
         self.find_element(LeadPageLocators.LAST_NAME_INPUT).send_keys(last_name)
@@ -48,6 +49,7 @@ class LeadPage(BasePage):
         self.find_element(LeadPageLocators.PHONE_NUMBER_INPUT).send_keys(phone)
 
     def click_save_lead(self):
+        self.wait_element_clickable(LeadPageLocators.SAVE_BTN)
         self.click_element(LeadPageLocators.SAVE_BTN)
 
     def save_lead(self):

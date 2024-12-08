@@ -34,11 +34,12 @@ class AccountPage(BasePage):
     def click_accounts_in_nav_bar(self):
         self.hover_element(AccountPageLocators.MARKETING_NAV_BAR)
         self.click_element(AccountPageLocators.ACCOUNTS_MENU_OPTION)
-        self.wait_element(AccountPageLocators.MODULE_TITLE)
+        self.wait_element_text(AccountPageLocators.MODULE_TITLE)
 
     def click_create_account(self):
         self.click_element(AccountPageLocators.CREATE_ACCOUNT)
         self.wait_element(AccountPageLocators.EDIT_VIEW)
+        self.wait_element_text(AccountPageLocators.MODULE_TITLE)
 
     def fill_name(self, last_name):
         self.find_element(AccountPageLocators.NAME_INPUT).send_keys(last_name)
@@ -47,6 +48,7 @@ class AccountPage(BasePage):
         self.find_element(AccountPageLocators.PHONE_NUMBER_INPUT).send_keys(phone)
 
     def click_save_account(self):
+        self.wait_element_clickable(AccountPageLocators.SAVE_BTN)
         self.click_element(AccountPageLocators.SAVE_BTN)
 
     def save_account(self):

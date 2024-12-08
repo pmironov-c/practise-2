@@ -28,16 +28,34 @@ class BasePage:
     def click_element(self, locator, timeout=5):
         self.find_element(locator, timeout).click()
 
-    def wait_element(self, locator, explicit_timeout=5):
+    def wait_element_text(self, locator, timeout=5):
+        WebDriverWait(self.driver, timeout).until(
+            lambda d: self.find_element(locator).text != "",
+            message=f"There is no text in element with locator {locator}",
+        )
+
+    def wait_element(self, locator, timeout=5):
         errors = [NoSuchElementException, ElementNotInteractableException]
         WebDriverWait(
             self.driver,
-            timeout=explicit_timeout,
+            timeout=timeout,
             poll_frequency=0.2,
             ignored_exceptions=errors,
         ).until(
             EC.presence_of_element_located(locator),
             message=f"Can't find element by locator {locator}",
+        )
+
+    def wait_element_clickable(self, locator, timeout=5):
+        errors = [NoSuchElementException, ElementNotInteractableException]
+        WebDriverWait(
+            self.driver,
+            timeout=timeout,
+            poll_frequency=0.2,
+            ignored_exceptions=errors,
+        ).until(
+            EC.element_to_be_clickable(locator),
+            message=f"Not clickable element by locator {locator}",
         )
 
     def hover_element(self, locator):
