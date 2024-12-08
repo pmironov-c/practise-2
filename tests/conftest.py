@@ -12,12 +12,11 @@ load_dotenv()
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default=os.environ.get("BROWSER"))
-    parser.addoption("--base-url", action="store", default=os.environ.get("BASE_URL"))
 
 
 @pytest.fixture()
-def browser_type():
-    return os.environ.get("BROWSER")
+def browser_type(request):
+    return request.config.getoption("--browser")
 
 
 @pytest.fixture()

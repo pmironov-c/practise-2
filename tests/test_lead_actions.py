@@ -1,6 +1,6 @@
 import os
 import pytest
-from tests.base_test import BaseTest
+from base_test import BaseTest
 from pages.login_page import LoginPage
 from pages.lead_page import LeadPageLocators as lead_locators, LeadPage
 

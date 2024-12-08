@@ -1,7 +1,7 @@
 import os
 import pytest
 from datetime import datetime
-from tests.base_test import BaseTest
+from base_test import BaseTest
 from pages.login_page import LoginPage
 from pages.account_page import AccountPageLocators as account_locators, AccountPage
 
