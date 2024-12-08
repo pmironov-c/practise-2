@@ -33,7 +33,7 @@ def browser(browser_type):
         options.page_load_strategy = "normal"
         options.add_experimental_option("detach", True)
         options.add_argument("--start-maximized --auto-open-devtools-for-tabs")
-        # options.add_argument("--headless")
+        options.add_argument("--headless")
         driver = webdriver.Chrome(options=options)
     elif browser_type == "firefox":
         options = webdriver.FirefoxOptions()
@@ -43,9 +43,9 @@ def browser(browser_type):
             "implicit": 5 * 10e3,
         }
         options.page_load_strategy = "normal"
-        # options.headless = True
+        options.headless = True
         driver = webdriver.Firefox(options=options)
         driver.maximize_window()
 
     yield driver
-    # driver.quit()
+    driver.quit()
