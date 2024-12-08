@@ -38,7 +38,6 @@ class TestAccounts(BaseTest):
         )
 
     def test_create_account(self):
-        self.init_account_info()
         self.login_page.login_as_user(self.url, self.user_login, self.user_password)
         self.account_page.create_account(self.account_info)
 

@@ -25,11 +25,7 @@ def browser(browser_type):
     driver = []
     if browser_type == "chrome":
         options = webdriver.ChromeOptions()
-        options.timeouts = {
-            "pageLoad": 5 * 10e3,
-            "script": 5 * 10e3,
-            "implicit": 5 * 10e3,
-        }
+        options.timeouts = {"pageLoad": 5 * 10e3, "script": 5 * 10e3}
         options.page_load_strategy = "normal"
         options.add_experimental_option("detach", True)
         options.add_argument("--start-maximized --auto-open-devtools-for-tabs")
@@ -37,11 +33,7 @@ def browser(browser_type):
         driver = webdriver.Chrome(options=options)
     elif browser_type == "firefox":
         options = webdriver.FirefoxOptions()
-        options.timeouts = {
-            "pageLoad": 5 * 10e3,
-            "script": 5 * 10e3,
-            "implicit": 5 * 10e3,
-        }
+        options.timeouts = {"pageLoad": 5 * 10e3, "script": 5 * 10e3}
         options.page_load_strategy = "normal"
         options.headless = True
         driver = webdriver.Firefox(options=options)
